@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Balentayms!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .circle-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-image: url('https://i.pinimg.com/736x/37/ee/de/37eede4a4f23fabed10211c39d42fd18.jpg');
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #FF8DA1;
+      margin-top: 0;
+    }
+    
+    .message {
+      font-size: 20px;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .message button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #FF8DA1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .message button:hover {
+      background-color: #FF7B91;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .modal-content h3 {
+      font-size: 24px;
+      margin: 0;
+      color: #FF8DA1;
+    }
+
+    .modal-content p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .go-to-image {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #FF8DA1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .go-to-image:hover {
+      background-color: #FF7B91;
+    }
+
+    .large-image-modal {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .large-image-modal img {
+      width: 80%;
+      max-width: 600px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="circle-photo" id="photo"></div>
+  <h2 id="question">Will you be my Valentine?</h2>
+  
+  <div class="message">
+    <button id="yesButton">Yes</button>
+    <button id="noButton">No</button>
+  </div>
+
+  <div id="yesModal" class="modal">
+    <div class="modal-content">
+      <h3>Yayyyy! Sabi na e crush m talaga aq 😏😏😏</h3>
+      <button id="goToImage" class="go-to-image">Click Me</button>
+    </div>
+  </div>
+
+ 
+  <div id="largeImageModal" class="large-image-modal">
+    <img src="https://i.pinimg.com/236x/2b/42/7d/2b427d279e49f188584adfd14d969b71.jpg" alt="Large Image">
+  </div>
+
+  <script>
+    let noResponseCount = 0;
+
+    document.getElementById("yesButton").addEventListener("click", function() {
+      document.getElementById("yesModal").style.display = "flex";
+    });
+
+    
+    document.getElementById("goToImage").addEventListener("click", function() {
+      document.getElementById("largeImageModal").style.display = "flex";
+    });
+
+    
+    document.getElementById("largeImageModal").addEventListener("click", function() {
+      document.getElementById("largeImageModal").style.display = "none";
+    });
+
+    document.getElementById("noButton").addEventListener("click", function() {
+      noResponseCount++;
+      if (noResponseCount === 1) {
+        document.getElementById("question").textContent = "Why :<";
+        document.getElementById("photo").style.backgroundImage = "url('https://i.pinimg.com/236x/77/63/85/776385c6a31e38bac208da2ce3534206.jpg')";
+      } else if (noResponseCount === 2) {
+        document.getElementById("question").textContent = "i-yes mo yan tangina mo";
+        document.getElementById("photo").style.backgroundImage = "url('https://i.pinimg.com/736x/80/f9/a2/80f9a2d0f8a5fd2cf8c2fa553ded2efa.jpg')";
+      } else {
+        document.getElementById("question").textContent = "Ge mass report yang account mo sakin mamaya";
+        document.getElementById("photo").style.backgroundImage = "url('https://i.pinimg.com/736x/41/36/5a/41365afc252e6a6a7560c4f05bdd190c.jpg')";
+      }
+    });
+  </script>
+
+</body>
+</html>
