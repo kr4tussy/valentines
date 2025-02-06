@@ -120,7 +120,6 @@
       width: 80%;
       max-width: 600px;
     }
-
   </style>
 </head>
 <body>
@@ -140,14 +139,22 @@
     </div>
   </div>
 
- 
   <div id="largeImageModal" class="large-image-modal">
     <img src="https://i.pinimg.com/236x/2b/42/7d/2b427d279e49f188584adfd14d969b71.jpg" alt="Large Image">
   </div>
 
+  <div id="newModal" class="modal">
+    <div class="modal-content">
+      <h3>Gift me puh 😊😊😊</h3>
+      <p>👉kr0nos👈</p>
+    </div>
+  </div>
+
   <script>
     let noResponseCount = 0;
+    let imageShown = false;  
 
+    
     document.getElementById("yesButton").addEventListener("click", function() {
       document.getElementById("yesModal").style.display = "flex";
     });
@@ -155,6 +162,7 @@
     
     document.getElementById("goToImage").addEventListener("click", function() {
       document.getElementById("largeImageModal").style.display = "flex";
+      imageShown = true;  // Image is now shown
     });
 
     
@@ -162,6 +170,20 @@
       document.getElementById("largeImageModal").style.display = "none";
     });
 
+    
+    document.body.addEventListener("click", function(event) {
+      
+      if (imageShown && !event.target.closest('.large-image-modal') && !event.target.closest('#newModal')) {
+        document.getElementById("newModal").style.display = "flex";
+      }
+    });
+
+    
+    document.getElementById("newModal").addEventListener("click", function() {
+      document.getElementById("newModal").style.display = "none";
+    });
+
+    
     document.getElementById("noButton").addEventListener("click", function() {
       noResponseCount++;
       if (noResponseCount === 1) {
